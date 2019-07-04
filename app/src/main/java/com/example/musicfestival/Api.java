@@ -1,6 +1,6 @@
-package com.example.energyaus;
+package com.example.musicfestival;
 
-import com.example.energyaus.model.EnergyAus;
+import com.example.musicfestival.model.MusicFestival;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -15,5 +15,5 @@ public interface Api {
     String BASE_URL = "http://eacodingtest.digital.energyaustralia.com.au";
 
     @GET("/api/v1/festivals")
-    Call<List<EnergyAus>> getData();
+    Call<List<MusicFestival>> getMusicFestivals();
 }

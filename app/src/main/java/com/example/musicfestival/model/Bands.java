@@ -1,4 +1,4 @@
-package com.example.energyaus.model;
+package com.example.musicfestival.model;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,4 +1,4 @@
-package com.example.energyaus.model;
+package com.example.musicfestival.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -8,14 +8,14 @@ import java.util.List;
  * Created by Uday on 04/07/2019.
  */
 
-public class EnergyAus {
+public class MusicFestival {
 
     @SerializedName("name")
     private String name;
     private List<Bands> bands;
 
 
-    public EnergyAus(String name, List<Bands> bands) {
+    public MusicFestival(String name, List<Bands> bands) {
         this.name = name;
         this.bands = bands;
     }
