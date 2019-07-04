@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.energyaus.R;
 import com.example.musicfestival.model.Bands;
+import com.example.musicfestival.model.FestBand;
 import com.example.musicfestival.model.MusicFestival;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,7 +17,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import java.util.List;
+import java.util.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 //Creating an String array for the ListView
                 String[] musicFestivalName = new String[MusicFestivalList.size()];
                 List<Bands>[] bands = new List[MusicFestivalList.size()];
-
+                Map<String,List<FestBand>> bandByRecordLabel = new HashMap<>();
                 //looping through all the heroes and inserting the names inside the string array
                 for (int i = 0; i < MusicFestivalList.size(); i++) {
                     musicFestivalName[i] = MusicFestivalList.get(i).getName();
@@ -79,9 +80,29 @@ public class MainActivity extends AppCompatActivity {
                          RecordLabelTv.setText("Record Label: "+bands[i].get(j).getRecordLabel());
                          container.addView(bandTv);
                          container.addView(RecordLabelTv);
+                         if(!bandByRecordLabel.containsKey(bands[i].get(j).getRecordLabel())){
+                             List<FestBand> festBandsList = new ArrayList(1);
+                             FestBand festBand =  new FestBand(bands[i].get(j).getName(),musicFestivalName[i]);
+                             festBandsList.add(festBand);
+                             bandByRecordLabel.put(musicFestivalName[i], festBandsList);
+                         } else {
+                             List<FestBand> festBandsList = bandByRecordLabel.get(bands[i].get(j).getRecordLabel());
+                             FestBand festBand =  new FestBand(bands[i].get(j).getName(),musicFestivalName[i]);
+                             festBandsList.add(festBand);
+                             bandByRecordLabel.put(musicFestivalName[i], festBandsList);
+                         }
+
                      }
                 }
 
+                // Getting an iterator
+                for (Map.Entry<String,List<FestBand>> entry : bandByRecordLabel.entrySet()) {
+                    final TextView rcLabelTv = new TextView(MainActivity.this);
+                    rcLabelTv.setTypeface(null, Typeface.BOLD);
+                    rcLabelTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+                    rcLabelTv.setPadding(10, 0, 0, 10);
+                    container.addView(rcLabelTv);
+                }
             }
 
             @Override
