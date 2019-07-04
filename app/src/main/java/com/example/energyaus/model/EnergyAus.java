@@ -1,4 +1,4 @@
-package com.example.energyaus;
+package com.example.energyaus.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -10,14 +10,19 @@ public class EnergyAus {
 
     @SerializedName("name")
     private String name;
+    private Bands bands[];
 
 
-    public EnergyAus(String name) {
+    public EnergyAus(String name, Bands bands[]) {
         this.name = name;
+        this.bands = bands;
     }
 
     public String getName() {
         return name;
+    }
+    public Bands[] getBands() {
+        return bands;
     }
 
 }

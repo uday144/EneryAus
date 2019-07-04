@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.example.energyaus.model.EnergyAus;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

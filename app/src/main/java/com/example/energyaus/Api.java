@@ -1,5 +1,6 @@
 package com.example.energyaus;
 
+import com.example.energyaus.model.EnergyAus;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
