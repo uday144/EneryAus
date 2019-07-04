@@ -2,7 +2,6 @@ package com.example.energyaus;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.example.energyaus.model.Bands;
@@ -26,11 +25,11 @@ public class MainActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listViewHeroes);
 
-        //calling the method to display the heroes
-        getHeroes();
+        //calling the method to display the Data
+        getData();
     }
 
-    private void getHeroes() {
+    private void getData() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
@@ -47,18 +46,15 @@ public class MainActivity extends AppCompatActivity {
 
                 //Creating an String array for the ListView
                 String[] data = new String[dataList.size()];
+                List<Bands>[] bands = new List[dataList.size()];
 
                 //looping through all the heroes and inserting the names inside the string array
                 for (int i = 0; i < dataList.size(); i++) {
-                    if(dataList.get(i).getName()!=null){
                         data[i] = dataList.get(i).getName();
-                        List<Bands> bands = dataList.get(i).getBands();
-                    }
+                        System.out.println("data[i]"+data[i]);
+                        bands[i] = dataList.get(i).getBands();
+                        System.out.println("bands[i],name"+bands[i].get(1).getName());
                 }
-              //  Toast.makeText(getApplicationContext(), heroes.length, Toast.LENGTH_SHORT).show();
-
-                //displaying the string array into listview
-                listView.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, data));
 
             }
 
@@ -68,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 
 }
