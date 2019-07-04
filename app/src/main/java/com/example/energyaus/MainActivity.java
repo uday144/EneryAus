@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.example.energyaus.model.Bands;
 import com.example.energyaus.model.EnergyAus;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < dataList.size(); i++) {
                     if(dataList.get(i).getName()!=null){
                         data[i] = dataList.get(i).getName();
+                        List<Bands> bands = dataList.get(i).getBands();
                     }
                 }
               //  Toast.makeText(getApplicationContext(), heroes.length, Toast.LENGTH_SHORT).show();

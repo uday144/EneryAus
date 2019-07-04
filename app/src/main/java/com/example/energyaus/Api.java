@@ -12,8 +12,8 @@ import java.util.List;
 
 public interface Api {
 
-    String BASE_URL = "http://eacodingtest.digital.energyaustralia.com.au/api/v1/";
+    String BASE_URL = "http://eacodingtest.digital.energyaustralia.com.au";
 
-    @GET("festivals")
+    @GET("/api/v1/festivals")
     Call<List<EnergyAus>> getData();
 }
