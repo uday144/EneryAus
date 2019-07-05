@@ -9,12 +9,13 @@ import com.google.gson.annotations.SerializedName;
 public class FestBand
 {
 
-    @SerializedName("name")
     private String bandName;
     private String festName;
+    private String recordLabel;
 
-    public FestBand(String bandName, String festName) {
+    public FestBand(String bandName, String recordLabel, String festName) {
         this.bandName = bandName;
+        this.recordLabel = recordLabel;
         this.festName = festName;
     }
 
@@ -23,6 +24,9 @@ public class FestBand
     }
     public String getFestName() {
         return festName;
+    }
+    public String getRecordLabel() {
+        return recordLabel;
     }
 
 }
